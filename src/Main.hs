@@ -2,23 +2,23 @@
 
 module Main where
 
-import Control.Concurrent.Async
-import qualified Data.Text as T
-import qualified Data.Sequence as Seq
-import Text.XML.HXT.Core
-import Text.HandsomeSoup
-import Data.Monoid ((<>))
-import System.Environment
-import Control.Monad
+----------------------------------------------------------------
+import           Control.Monad
 import qualified Data.ByteString.Lazy.Char8 as LBS8
-import System.Process
-import GHC.IO.Handle
+import           Data.Monoid                ((<>))
+import qualified Data.Sequence              as Seq
+import qualified Data.Text                  as T
+import           GHC.IO.Handle
+import           System.Environment
+import           System.Process
+import           Text.HandsomeSoup
+import           Text.XML.HXT.Core
+---------------------------------------------------------------
 
 data Torrent = Torrent
-  { _index :: Int
-  -- , _name :: T.Text
+  { _index        :: Int
   , _downloadLink :: String
-  , _name :: String
+  , _name         :: String
   } deriving Show
 
 toTorrent :: ArrowXml a => a XmlTree Torrent
@@ -31,7 +31,6 @@ getTorrents :: String -> IO (Seq.Seq Torrent)
 getTorrents search = do
   let url = "https://thepiratebay.org/search/" <> search
   htmlString <- readProcess "curl" ["--silent", "-L", url, "--socks5-hostname", "127.0.0.1:8123"] ""
-
   let doc = parseHtml htmlString
   Seq.fromList <$> runX (doc >>> css "table#searchResult tr" >>> toTorrent)
 
