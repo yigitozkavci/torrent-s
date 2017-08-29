@@ -13,7 +13,7 @@ $ ./dist/build/TorrentS/TorrentS "Catch me if you can"
 ```
 
 # Example
-```shell
+```
 λ $~ ./dist/build/TorrentS/TorrentS "Catch me if you can"
 Torrents:
 0) Catch.Me.If.You.Can.2002.720p.BluRay.x264.Hindi.Eng.AC3-ETRG
@@ -51,5 +51,9 @@ Select a torrent with id:
 27
 magnet:?xt=urn:btih:296f2d9ccaf02027bf32f117b9b6d0edf9a60919&dn=Catch+me+if+you+can&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Fzer0day.ch%3A1337&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Fexodus.desync.com%3A6969
 ```
+
+# Proxy
+This program expects you to have a socks5 proxy tunnel from address `127.0.0.1:8123`
+
 # LICENSE
 [LICENSE](https://github.com/yigitozkavci/torrent-s/blob/master/LICENSE)
